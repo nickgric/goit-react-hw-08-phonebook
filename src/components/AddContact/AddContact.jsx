@@ -6,8 +6,7 @@ import { addContact } from 'redux/contacts/contactsOperations';
 import { selectContacts } from 'redux/contacts/contactsSelectors';
 
 import { Box } from '@mui/system';
-import { Button, TextField, InputAdornment } from '@mui/material';
-import { AccountCircle } from '@mui/icons-material';
+import { Button, TextField } from '@mui/material';
 
 export const AddContact = () => {
   const [name, setName] = useState('');
