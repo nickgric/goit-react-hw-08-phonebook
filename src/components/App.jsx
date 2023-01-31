@@ -3,6 +3,7 @@ import { lazy, Suspense } from 'react';
 import { useDispatch } from 'react-redux';
 import { refresh } from 'redux/auth/authOperations';
 import { useEffect } from 'react';
+import { Navigate } from 'react-router-dom';
 
 import { Navigation } from './Navigation';
 import { AuthMenu } from './AuthMenu';
@@ -69,6 +70,14 @@ export const App = () => {
             element={
               <PublicRoute>
                 <About />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="*"
+            element={
+              <PublicRoute>
+                <Navigate to="/" />
               </PublicRoute>
             }
           />
