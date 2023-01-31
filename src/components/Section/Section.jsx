@@ -1,18 +1,21 @@
-import PropTypes from 'prop-types';
-
-import styles from './Section.module.css';
+import { Typography, Container } from '@mui/material';
 
 export const Section = ({ title, children }) => {
   return (
     <>
-      <section className={styles.container}>
-        {title && <h2>{title}</h2>}
+      <Container maxWidth="sm" component="section">
+        {title && (
+          <Typography
+            variant="h4"
+            component="h2"
+            color="primary"
+            sx={{ marginBottom: '16px' }}
+          >
+            {title}
+          </Typography>
+        )}
         {children}
-      </section>
+      </Container>
     </>
   );
-};
-
-Section.propTypes = {
-  title: PropTypes.string,
 };

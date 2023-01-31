@@ -6,6 +6,9 @@ import { selectContacts } from 'redux/contacts/contactsSelectors';
 import { selectEdit } from 'redux/contacts/contactsSelectors';
 import { editContact } from 'redux/contacts/contactsOperations';
 
+import { Box } from '@mui/system';
+import { Button, TextField } from '@mui/material';
+
 export const EditContactForm = ({ setForm }) => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
@@ -48,37 +51,39 @@ export const EditContactForm = ({ setForm }) => {
   };
 
   return (
-    <form onSubmit={submitHandler}>
-      <div>
-        <label>
-          <input
-            onInput={inputHandler}
-            value={name}
-            type="text"
-            name="name"
-            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan!"
-            required
-          />
-          <b>→ name</b>
-        </label>
-        <label>
-          <input
-            onInput={inputHandler}
-            value={number}
-            type="tel"
-            name="number"
-            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +!"
-            required
-          />
-          <b>→ number</b>
-        </label>
-      </div>
-      <button type="submit">Save edits</button>
-      <button type="button" onClick={() => setForm(false)}>
+    <Box component="form" onSubmit={submitHandler}>
+      <Box>
+        <TextField
+          sx={{ marginBottom: '16px' }}
+          value={name}
+          variant="outlined"
+          onInput={inputHandler}
+          type="text"
+          name="name"
+          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan!"
+          required
+          fullWidth={true}
+        />
+        <TextField
+          sx={{ marginBottom: '16px' }}
+          value={number}
+          variant="outlined"
+          onInput={inputHandler}
+          type="tel"
+          name="number"
+          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +!"
+          required
+          fullWidth={true}
+        />
+      </Box>
+      <Button variant="outlined" type="submit">
+        Save edits
+      </Button>
+      <Button variant="outlined" type="button" onClick={() => setForm(false)}>
         Close
-      </button>
-    </form>
+      </Button>
+    </Box>
   );
 };

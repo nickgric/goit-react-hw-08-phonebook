@@ -22,7 +22,6 @@ const Contacts = () => {
       <Section title="Add contact">
         <AddContact />
       </Section>
-      ;
     </>
   );
 };

@@ -5,10 +5,10 @@ import { refresh } from 'redux/auth/authOperations';
 import { useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 
-import { Navigation } from './Navigation';
-import { AuthMenu } from './AuthMenu';
 import { Section } from './Section';
 import { AuthError } from './AuthError';
+import { HeaderBar } from './HeaderBar';
+import { FooterBar } from './FooterBar';
 
 import { PublicRoute } from 'HOCs/PublicRoute';
 import { PrivateRoute } from 'HOCs/PrivateRoute';
@@ -27,9 +27,7 @@ export const App = () => {
 
   return (
     <>
-      <h1>React-HW08 'Phonebook' @nickgric</h1>
-      <Navigation />
-      <AuthMenu />
+      <HeaderBar />
       <AuthError />
       <Suspense fallback={<Section title="Loading..." />}>
         <Routes>
@@ -83,6 +81,7 @@ export const App = () => {
           />
         </Routes>
       </Suspense>
+      <FooterBar />
     </>
   );
 };

@@ -1,5 +1,4 @@
-import Avatar from 'react-avatar';
-import { RotatingTriangles } from 'react-loader-spinner';
+import { ThreeDots } from 'react-loader-spinner';
 
 import { deleteContact } from 'redux/contacts/contactsOperations';
 import {
@@ -9,9 +8,13 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 
+import { ContactsItem } from 'components/ContactsItem';
+
 import { fetchContacts } from 'redux/contacts/contactsOperations';
 import { selectFilter } from 'redux/filter/filterSelectors';
 import { editedContactSaver } from 'redux/contacts/contactsSlice';
+
+import { List, Typography } from '@mui/material';
 
 export const ContactsList = ({ setForm }) => {
   const dispatch = useDispatch();
@@ -43,48 +46,24 @@ export const ContactsList = ({ setForm }) => {
 
   return (
     <>
-      <ul>
+      <List>
         {filteredContacts()
           .sort((a, b) => (a.name > b.name ? 1 : -1))
           .map(contact => (
-            <li key={contact.id}>
-              <Avatar
-                name={contact.name}
-                maxInitials={2}
-                size={30}
-                round={true}
-              />
-              <p>
-                <b>
-                  {contact.name.length < 35
-                    ? contact.name
-                    : contact.name.substr(0, 35) + '...'}
-                  :
-                </b>{' '}
-                {contact.number}
-              </p>
-              <div>
-                <button name={contact.id} onClick={editHandler}>
-                  Edit
-                </button>
-                <button name={contact.id} onClick={deleteHandler}>
-                  Delete
-                </button>
-              </div>
-            </li>
+            <ContactsItem
+              key={contact.id}
+              contact={contact}
+              deleteHandler={deleteHandler}
+              editHandler={editHandler}
+            />
           ))}
-      </ul>
+      </List>
       {contacts.length > 0 && (
-        <p>
+        <Typography variant="body2">
           Sorted by <b>name</b>
-        </p>
+        </Typography>
       )}
-      {loading && (
-        <RotatingTriangles
-          height={60}
-          colors={['#a52a2a', '#EF8354', '#DB5461']}
-        />
-      )}
+      {loading && <ThreeDots height={60} color="#1976D2" />}
     </>
   );
 };

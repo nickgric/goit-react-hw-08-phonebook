@@ -1,0 +1,7 @@
+.box {
+  display: flex;
+  gap: 1rem;
+  margin-right: 2rem;
+  justify-content: center;
+  align-items: center;
+}

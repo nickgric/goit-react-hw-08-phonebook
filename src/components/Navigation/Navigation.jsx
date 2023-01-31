@@ -1,46 +1,47 @@
 import { useSelector } from 'react-redux';
 import { selectToken } from 'redux/auth/authSelectors';
 
-import {
-  NavigationStyled,
-  NavListStyled,
-  NavListItemStyled,
-  HeaderStyled,
-  NavLinkStyled,
-} from './Navigation.styled';
+import { NavLink } from 'react-router-dom';
+import { Link, List, ListItem } from '@mui/material';
 
 export const Navigation = () => {
   const token = useSelector(selectToken);
 
   return (
-    <HeaderStyled>
-      <NavigationStyled>
-        <NavListStyled>
-          {!token && (
-            <NavListItemStyled>
-              <NavLinkStyled to="/">Home</NavLinkStyled>
-            </NavListItemStyled>
-          )}
-          {!token && (
-            <NavListItemStyled>
-              <NavLinkStyled to="/login">Login</NavLinkStyled>
-            </NavListItemStyled>
-          )}
-          {!token && (
-            <NavListItemStyled>
-              <NavLinkStyled to="/register">Register</NavLinkStyled>
-            </NavListItemStyled>
-          )}
-          {token && (
-            <NavListItemStyled>
-              <NavLinkStyled to="/contacts">Contacts</NavLinkStyled>
-            </NavListItemStyled>
-          )}
-          <NavListItemStyled>
-            <NavLinkStyled to="/about">About</NavLinkStyled>
-          </NavListItemStyled>
-        </NavListStyled>
-      </NavigationStyled>
-    </HeaderStyled>
+    <List sx={{ display: 'flex' }} color="inherit">
+      {!token && (
+        <ListItem sx={{ width: '90px' }} color="inherit">
+          <Link color="inherit" aria-label="Home" component={NavLink} to="/">
+            Home
+          </Link>
+        </ListItem>
+      )}
+      {!token && (
+        <ListItem sx={{ width: '90px' }} color="inherit">
+          <Link color="inherit" component={NavLink} to="/login">
+            Sign in
+          </Link>
+        </ListItem>
+      )}
+      {!token && (
+        <ListItem sx={{ width: '90px' }} color="inherit">
+          <Link color="inherit" component={NavLink} to="/register">
+            Sign up
+          </Link>
+        </ListItem>
+      )}
+      {token && (
+        <ListItem sx={{ width: '90px' }} color="inherit">
+          <Link color="inherit" component={NavLink} to="/contacts">
+            Contacts
+          </Link>
+        </ListItem>
+      )}
+      <ListItem sx={{ width: '90px' }} color="inherit">
+        <Link color="inherit" component={NavLink} to="/about">
+          About
+        </Link>
+      </ListItem>
+    </List>
   );
 };

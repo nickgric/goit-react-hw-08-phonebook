@@ -1,9 +1,10 @@
 import { Section } from '../components/Section';
+import { Typography } from '@mui/material';
 
 const Home = () => {
   return (
     <Section title="About">
-      <p>Coming soon...</p>
+      <Typography variant="body1">Coming soon...</Typography>
     </Section>
   );
 };

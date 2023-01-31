@@ -3,7 +3,7 @@ import { LoginForm } from 'components/LoginForm';
 
 const Login = () => {
   return (
-    <Section title="Login">
+    <Section title="Sign in">
       <LoginForm />
     </Section>
   );

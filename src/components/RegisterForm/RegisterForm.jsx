@@ -3,6 +3,9 @@ import { useDispatch } from 'react-redux';
 
 import { register } from 'redux/auth/authOperations';
 
+import { Box } from '@mui/material';
+import { Typography, TextField, Button } from '@mui/material';
+
 export const RegisterForm = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -36,40 +39,47 @@ export const RegisterForm = () => {
 
   return (
     <>
-      <form onSubmit={submitHandler}>
-        <p>Please, sign up in the phonebook!</p>
-        <label>
-          <p>Name</p>
-          <input
-            name="name"
-            type="text"
-            value={name}
-            onInput={inputHandler}
-            required
-          />
-        </label>
-        <label>
-          <p>Email</p>
-          <input
-            name="email"
-            type="email"
-            value={email}
-            onInput={inputHandler}
-            required
-          />
-        </label>
-        <label>
-          <p>Password</p>
-          <input
-            name="password"
-            type="password"
-            value={password}
-            onInput={inputHandler}
-            required
-          />
-        </label>
-        <button>Sign up</button>
-      </form>
+      <Box component="form" onSubmit={submitHandler}>
+        <Typography variant="body1">
+          Please, <b>sign up</b> to the phonebook:
+        </Typography>
+        <TextField
+          sx={{ marginBottom: '16px' }}
+          helperText="Name*"
+          variant="outlined"
+          name="name"
+          type="text"
+          value={name}
+          onInput={inputHandler}
+          required
+          fullWidth={true}
+        />
+        <TextField
+          sx={{ marginBottom: '16px' }}
+          helperText="Email*"
+          variant="outlined"
+          name="email"
+          type="email"
+          value={email}
+          onInput={inputHandler}
+          required
+          fullWidth={true}
+        />
+        <TextField
+          sx={{ marginBottom: '16px' }}
+          helperText="Password*"
+          variant="outlined"
+          name="password"
+          type="password"
+          value={password}
+          onInput={inputHandler}
+          required
+          fullWidth={true}
+        />
+        <Button type="submit" variant="contained">
+          Sign up
+        </Button>
+      </Box>
     </>
   );
 };

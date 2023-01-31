@@ -1,7 +1,8 @@
-import { Section } from 'components/Section';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectUser, selectToken } from 'redux/auth/authSelectors';
 import { logout } from 'redux/auth/authOperations';
+import { IconButton, Typography, Box } from '@mui/material';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
 export const AuthMenu = () => {
   const token = useSelector(selectToken);
@@ -12,12 +13,18 @@ export const AuthMenu = () => {
   return (
     <>
       {token && (
-        <Section>
-          <p>
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <Typography>
             Welcome, <b>{user.name}</b>
-          </p>
-          <button onClick={() => dispatch(logout())}>Logout</button>
-        </Section>
+          </Typography>
+          <IconButton
+            color="inherit"
+            aria-label="Log out"
+            onClick={() => dispatch(logout())}
+          >
+            <ExitToAppIcon color="inherit" />
+          </IconButton>
+        </Box>
       )}
     </>
   );
