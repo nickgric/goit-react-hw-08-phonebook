@@ -13,3 +13,22 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+h1 {
+  text-align: center;
+  color: #ccc;
+  font-weight: 900;
+}
+
+h2 {
+  font-weight: 800;
+  color: #a52a2a;
+}
+
+button {
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+}
